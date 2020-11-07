@@ -50,10 +50,13 @@ python validation.py
 
 ## Results
 Now for the interesting part :exclamation: :exclamation: Take a look at the results obtained. :sparkling_heart: <br>
-<kbd>
 <p align="center">
+  <kbd>
   <img src="evaluation_output/output_00000000.jpg" width="384" />
+  </kbd>
+  <kbd>
   <img src="evaluation_output/output_00000008.jpg" width="384" /> 
+  </kbd>
 </p>
 
 <p align="center">
