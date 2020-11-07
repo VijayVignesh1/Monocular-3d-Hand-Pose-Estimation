@@ -1,5 +1,5 @@
 # Monocular-3d-Hand-Pose-Estimation
-Implmentation of Monocular 3d Hand Pose Estimation using ResNet architecture. :smiley: <br>
+Implmentation of <b> Monocular 3d Hand Pose Estimation </b> using ResNet architecture. :smiley: <br>
 The dataset used is FreiHAND dataset which follows the MANO format for the poses. <br>
 Hence, this model can be easily integrated with SMPL-X or SMPL-H models. :wink: <br>
 
@@ -49,7 +49,8 @@ python validation.py
 ```
 
 ## Results
-Now for the interesting part!! Take a look at the results obtained. <br>
+Now for the interesting part :exclamation: :exclamation: <br>
+Take a look at the results obtained. :sparkling_heart: <br>
 <p align="center">
   <img src="evaluation_output/output_00000000.jpg" width="384" />
   <img src="evaluation_output/output_00000008.jpg" width="384" /> 
