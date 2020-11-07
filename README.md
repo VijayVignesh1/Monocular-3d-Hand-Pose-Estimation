@@ -49,8 +49,7 @@ python validation.py
 ```
 
 ## Results
-Now for the interesting part :exclamation: :exclamation: <br>
-Take a look at the results obtained. :sparkling_heart: <br>
+Now for the interesting part :exclamation: :exclamation: Take a look at the results obtained. :sparkling_heart: <br>
 <p align="center">
   <img src="evaluation_output/output_00000000.jpg" width="384" />
   <img src="evaluation_output/output_00000008.jpg" width="384" /> 
