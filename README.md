@@ -3,6 +3,7 @@ Implmentation of <b> Monocular 3d Hand Pose Estimation </b> using ResNet archite
 The dataset used is FreiHAND dataset which follows the MANO format for the poses. <br>
 Hence, this model can be easily integrated with SMPL-X or SMPL-H models. :wink: <br>
 MANO model is used for rendering which was released by Max Plank Institute of Intelligent Systems. <br>
+![git_images/freihand.png]
 
 ## Requirements
 * torch >= 1.6.0
