@@ -13,6 +13,13 @@ import pyrender
 from webuser.smpl_handpca_wrapper_HAND_only import load_model
 
 class Render():
+
+    def __init__(self):
+        if torch.cuda.is_available():
+            self.device="cuda"
+        else:
+            self.device="cpu"
+
     def blend_shapes(self, betas, shape_disps):
         ''' Calculates the per vertex displacement due to the blend shapes
 
@@ -247,48 +254,35 @@ class Render():
 
         return verts, J_transformed
 
+    # Renders the hand given the regresssed pose parameters using Linear Blend Skinning
     def renderer(self,hand_pose):
-
         m = load_model('models/MANO_RIGHT.pkl', ncomps=45, flat_hand_mean=False)
-
-
-        betas=torch.zeros((1,10)).cuda()
-        pose=torch.zeros((1,16*3)).cuda()
-
-
-        # pose[0][:]=torch.FloatTensor([[-0.9076, -2.1418,  1.3428, -0.0209, -0.0530, -0.0746, -0.0030, -0.0256,
-        #         0.2309,  0.0129, -0.0453,  0.0233,  0.0684,  0.0022,  0.1944, -0.1247,
-        #         -0.0996, -0.1648,  0.0471,  0.0249, -0.1274, -0.0260, -0.0078,  0.2745,
-        #         -0.0534, -0.0938, -0.0986,  0.0842,  0.1186, -0.1396,  0.1119,  0.0065,
-        #         0.1549, -0.1469, -0.0863, -0.0340, -0.0132,  0.1406, -0.0166, -0.0618,
-        #         0.0674, -0.2518, -0.2383, -0.0024,  0.1387,  0.0155, -0.0763,  0.0194]]).cuda()
+        betas=torch.zeros((1,10)).to(self.device)
+        pose=torch.zeros((1,16*3)).to(self.device)
         pose[0][:]=hand_pose
-
         pose[0][3:]+=torch.FloatTensor([ 0.11167872, -0.04289217,  0.41644184,  0.10881133,  0.06598568,
-                0.75622001, -0.09639297,  0.09091566,  0.18845929, -0.11809504,
-            -0.05094385,  0.5295845 , -0.14369841, -0.0552417 ,  0.70485714,
-            -0.01918292,  0.09233685,  0.33791352, -0.45703298,  0.19628395,
-                0.62545753, -0.21465238,  0.06599829,  0.50689421, -0.36972436,
-                0.06034463,  0.07949023, -0.14186969,  0.08585263,  0.63552826,
-            -0.30334159,  0.05788098,  0.63138921, -0.17612089,  0.13209308,
-                0.37335458,  0.85096428, -0.27692274,  0.09154807, -0.49983944,
-            -0.02655647, -0.05288088,  0.53555915, -0.04596104,  0.27735802]).cuda()
+                                        0.75622001, -0.09639297,  0.09091566,  0.18845929, -0.11809504,
+                                        -0.05094385,  0.5295845 , -0.14369841, -0.0552417 ,  0.70485714,
+                                        -0.01918292,  0.09233685,  0.33791352, -0.45703298,  0.19628395,
+                                        0.62545753, -0.21465238,  0.06599829,  0.50689421, -0.36972436,
+                                        0.06034463,  0.07949023, -0.14186969,  0.08585263,  0.63552826,
+                                        -0.30334159,  0.05788098,  0.63138921, -0.17612089,  0.13209308,
+                                        0.37335458,  0.85096428, -0.27692274,  0.09154807, -0.49983944,
+                                        -0.02655647, -0.05288088,  0.53555915, -0.04596104,  0.27735802]).to(self.device)
 
-        v_template=torch.from_numpy(np.array(m.v_template,dtype=np.float32)).cuda()
-
-        shapedirs=torch.from_numpy(np.array(m.shapedirs,dtype=np.float32)).cuda()
-        posedirs=torch.from_numpy(np.array(m.posedirs,dtype=np.float32)).cuda()
+        v_template=torch.from_numpy(np.array(m.v_template,dtype=np.float32)).to(self.device)
+        shapedirs=torch.from_numpy(np.array(m.shapedirs,dtype=np.float32)).to(self.device)
+        posedirs=torch.from_numpy(np.array(m.posedirs,dtype=np.float32)).to(self.device)
         posedirs=posedirs.permute(2,0,1)
         posedirs=posedirs.contiguous().view(135,-1)
-        J_regressor=torch.from_numpy(np.array(m.J_regressor.toarray(),dtype=np.float32)).cuda()
-        lbs_weights=torch.from_numpy(np.array(m.weights,dtype=np.float32)).cuda()
-
+        J_regressor=torch.from_numpy(np.array(m.J_regressor.toarray(),dtype=np.float32)).to(self.device)
+        lbs_weights=torch.from_numpy(np.array(m.weights,dtype=np.float32)).to(self.device)
         parents=torch.LongTensor([-1,          0,          1,          2,          0,
-                        4,          5,          0,          7,          8,
-                        0,         10,         11,          0,         13,
-                        14]).cuda()
-
+                                    4,          5,          0,          7,          8,
+                                    0,         10,         11,          0,         13,
+                                    14]).to(self.device)
         faces=torch.from_numpy(np.array(m.f,dtype=np.float32))
+
         scene=trimesh.scene.Scene()
         v,j=self.lbs(betas,pose,v_template,shapedirs,posedirs,J_regressor,parents,lbs_weights)
         out_mesh = trimesh.Trimesh(v.detach().cpu().numpy().reshape((778,3)),faces=faces,prcess=True)
@@ -304,12 +298,13 @@ class Render():
         return rendered, out_mesh
 
 """
+# Example Usage
 ren=Render()
 pose=torch.FloatTensor([[-0.9076, -2.1418,  1.3428, -0.0209, -0.0530, -0.0746, -0.0030, -0.0256,
                 0.2309,  0.0129, -0.0453,  0.0233,  0.0684,  0.0022,  0.1944, -0.1247,
                 -0.0996, -0.1648,  0.0471,  0.0249, -0.1274, -0.0260, -0.0078,  0.2745,
                 -0.0534, -0.0938, -0.0986,  0.0842,  0.1186, -0.1396,  0.1119,  0.0065,
                 0.1549, -0.1469, -0.0863, -0.0340, -0.0132,  0.1406, -0.0166, -0.0618,
-                0.0674, -0.2518, -0.2383, -0.0024,  0.1387,  0.0155, -0.0763,  0.0194]]).cuda()
-_=ren.renderer(pose)
+                0.0674, -0.2518, -0.2383, -0.0024,  0.1387,  0.0155, -0.0763,  0.0194]]).to(device)
+img_rendered=ren.renderer(pose)
 """
