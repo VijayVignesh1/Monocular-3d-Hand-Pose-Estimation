@@ -12,7 +12,7 @@ Hence, this model can be easily integrated with SMPL-X or SMPL-H models. :wink: 
 
 ## Steps to Run
 * Download the training and evaluation dataset from [here](https://lmb.informatik.uni-freiburg.de/data/freihand/FreiHAND_pub_v2.zip) and place it in $(ROOT). Place the testing images in the "evaluation/temp" folder. <br>
-Download the checkpoint file from (here)[https://drive.google.com/file/d/172Hzt_CH4dIEFFBSiyr5eFvYEBmxqvHQ/view?usp=sharing] and place it in "checkpoints" folder. (Note: The checkpoint file in the link is not fully trained. :sweat:) <br>
+Download the checkpoint file from [here](https://drive.google.com/file/d/172Hzt_CH4dIEFFBSiyr5eFvYEBmxqvHQ/view?usp=sharing) and place it in "checkpoints" folder. (Note: The checkpoint file in the link is not fully trained. :sweat:) <br>
 Final directory structure below 👇 👇
 ```
 $(ROOT)
