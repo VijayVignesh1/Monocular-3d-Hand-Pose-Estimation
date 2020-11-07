@@ -75,7 +75,7 @@ Now for the interesting part :exclamation: :exclamation: Take a look at the resu
 </kbd>
 
 ## Final Note
-The outputs are fairly accurate, but would perform even better if trained for more epochs. The checkpoint file given above is only trained for 90 epochs. :grin: <br> <br>
+The outputs are fairly accurate, but would perform even better if trained for more epochs. The checkpoint file given above is only trained for 90 epochs. :grin: <br>
 
 Go ahead..pull it, train it and have fun. :smile:
 
