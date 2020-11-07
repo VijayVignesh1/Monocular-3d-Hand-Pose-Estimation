@@ -49,8 +49,8 @@ python validation.py
 ```
 
 ## Results
+Now for the interesting part :exclamation: :exclamation: Take a look at the results obtained. :sparkling_heart: <br>
 <p align="center">
-  Now for the interesting part :exclamation: :exclamation: Take a look at the results obtained. :sparkling_heart: <br>
   <kbd>
   <img src="evaluation_output/output_00000000.jpg" width="384" />
   </kbd>
@@ -68,6 +68,7 @@ python validation.py
   </kbd>
 </p>
 </kbd>
+
 ## Final Note
 The outputs are fairly accurate, but would perform even better if trained for more epochs. The checkpoint file given above is only trained for 90 epochs. :grin: <br> <br>
 
