@@ -50,6 +50,7 @@ python validation.py
 
 ## Results
 Now for the interesting part :exclamation: :exclamation: Take a look at the results obtained. :sparkling_heart: <br>
+<kbd>
 <p align="center">
   <img src="evaluation_output/output_00000000.jpg" width="384" />
   <img src="evaluation_output/output_00000008.jpg" width="384" /> 
@@ -59,7 +60,7 @@ Now for the interesting part :exclamation: :exclamation: Take a look at the resu
   <img src="evaluation_output/output_00000012.jpg" width="384" />
   <img src="evaluation_output/output_00000016.jpg" width="384" /> 
 </p>
-
+</kbd>
 ## Final Note
 The outputs are fairly accurate, but would perform even better if trained for more epochs. The checkpoint file given above is only trained for 90 epochs. :grin: <br> <br>
 
