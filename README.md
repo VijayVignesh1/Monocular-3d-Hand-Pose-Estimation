@@ -50,14 +50,14 @@ python validation.py
 
 ## Results
 Now for the interesting part!! Take a look at the results obtained. <br>
-<p float="left">
-  <img src="evaluation_output/output_00000000.jpg" width="224" />
-  <img src="evaluation_output/output_00000008.jpg" width="224" /> 
+<p float="center">
+  <img src="evaluation_output/output_00000000.jpg" width="512" />
+  <img src="evaluation_output/output_00000008.jpg" width="512" /> 
 </p>
 
 <p float="left">
-  <img src="evaluation_output/output_00000012.jpg" width="224" />
-  <img src="evaluation_output/output_00000016.jpg" width="224" /> 
+  <img src="evaluation_output/output_00000012.jpg" width="512" />
+  <img src="evaluation_output/output_00000016.jpg" width="512" /> 
 </p>
 
 ## Final Note
