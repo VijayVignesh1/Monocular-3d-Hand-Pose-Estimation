@@ -5,10 +5,9 @@ Hence, this model can be easily integrated with SMPL-X or SMPL-H models. :wink: 
 MANO model is used for rendering which was released by Max Plank Institute of Intelligent Systems. <br>
 <p align="center">
   <kbd>
-  <img src="git_images/freihand"/>
+  <img src="git_images/freihand.png"/>
   </kbd>
 </p>
-![](git_images/freihand.png)
 
 ## Requirements
 * torch >= 1.6.0
