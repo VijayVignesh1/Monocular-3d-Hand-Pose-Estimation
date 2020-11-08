@@ -77,10 +77,10 @@ Now for the interesting part :exclamation: :exclamation: Take a look at the resu
 ## Final Note
 The outputs are fairly accurate, but would perform even better if trained for more epochs. The checkpoint file given above is only trained for 90 epochs. :grin: <br>
 
-Go ahead..pull it, train it and have fun. :smile:
+Go ahead..pull it, train it and have fun. And don't forget to :star:<b><i>star</i></b>:star: the repo, if you like it.:smile:
 
 -------------------------------------
 <p align="center">
-:star: Happiness should be a function without any parameters :star: <br> <br>
+:star2: Happiness should be a function without any parameters :star2: <br> <br>
 <b>Happy Coding</b> :exclamation: :exclamation:
 </p>
